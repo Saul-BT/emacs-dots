@@ -1,0 +1,134 @@
+#+STARTUP: overview
+#+TITLE: Saul-bt's Emacs
+#+CREATOR: Saul Blanco Tejero (@elGolpista)
+#+LANGUAGE: en
+#+OPTIONS: num:nil
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+[[./img/screenshot.png]]
+* Variables
+#+BEGIN_SRC emacs-lisp
+  (defvar bg-darker-color "#25262B")
+#+END_SRC
+
+* Keybinding
+** Window
+Keybindings for resize windows
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "S-C-<down>") 'shrink-window)
+  (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+#+END_SRC
+
+** Org
+Agenda
+#+BEGIN_SRC emacs-lisp
+;;  (setq show-week-agenda-p t)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+#+END_SRC
+
+* Terminal
+** Making bash as default shell for ansi-term
+#+BEGIN_SRC emacs-lisp
+  (defvar term-shell "/bin/bash") 
+  (defadvice ansi-term (before force-bash)
+     (interactive (list term-shell)))
+  (ad-activate 'ansi-term)
+#+END_SRC
+
+* Packages
+** Which-key
+For friendly suggestions in the mini-buffer
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init (which-key-mode))
+#+END_SRC
+
+** Beacon
+Know cursor position with a cool animation
+#+BEGIN_SRC emacs-lisp
+  (use-package beacon
+    :ensure t
+    :init (beacon-mode t))
+#+END_SRC
+
+** Icons
+#+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons
+    :ensure t
+    :config
+    (when (not (member "all-the-icons" (font-family-list)))
+      (all-the-icons-install-fonts t)))
+#+END_SRC
+
+** Dashboard
+Beautiful startup buffer
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-banner-logo-title "Welcome master :D")
+    (setq dashboard-startup-banner "~/.emacs.d/img/logo.png")
+    (setq dashboard-set-file-icons t)
+    (setq dashboard-navigator-buttons
+	  `(;; line1
+	    ((,(all-the-icons-octicon "mark-github" :height 1.1 :v-adjust 0.0)
+	      "GitHub" "Go to GitHub"
+	      (lambda (&rest _) (browse-url "https://github.com")))
+
+	     (,(all-the-icons-octicon "tools" :height 1.1 :v-adjust 0.0)
+	      "Config" "Open Configuration"
+	      (lambda (&rest _) (find-file "~/.emacs.d/config.org")))))))
+  (setq dashboard-set-navigator t)
+#+END_SRC
+
+* Theme
+** Dracula theme
+#+BEGIN_SRC emacs-lisp
+  (use-package dracula-theme
+    :ensure t
+    :init (load-theme 'dracula t))
+#+END_SRC
+
+* Misc
+** GUI sucks
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+#+END_SRC
+
+** Highlight current line
+#+BEGIN_SRC emacs-lisp
+  (global-hl-line-mode t)
+  (set-face-background 'hl-line bg-darker-color)
+#+END_SRC
+
+** Aliases
+#+BEGIN_SRC emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** Prevent file backups
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-file nil)
+  (setq auto-save-default nil)
+#+END_SRC
+
+** Normal scroll behavior
+#+BEGIN_SRC emacs-lisp
+  (setq scroll-conservatively 100)
+#+END_SRC
+
+** Bigger line spacing
+#+BEGIN_SRC emacs-lisp
+  (defun set-bigger-spacing ()
+    (setq-local default-text-properties '(line-spacing 0.16 line-height 1.16)))
+  (add-hook 'text-mode-hook 'set-bigger-spacing)
+  (add-hook 'prog-mode-hook 'set-bigger-spacing)
+#+END_SRC
+ 

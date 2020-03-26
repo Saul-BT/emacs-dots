@@ -1,0 +1,15 @@
+*~
+
+.cache
+.org-id-locations
+
+auto-save-list
+bookmarks
+config.el
+diary
+elpa
+network-security.data
+recentf
+server
+tramp
+url
