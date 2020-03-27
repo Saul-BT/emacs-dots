@@ -11,13 +11,30 @@
 #+END_SRC
 
 * Keybindings
-** Window
-Keybindings for resize windows
+** Windows
+*** Resize windows
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
   (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
   (global-set-key (kbd "S-C-<down>") 'shrink-window)
   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+#+END_SRC
+
+*** Follow windows when split
+#+BEGIN_SRC emacs-lisp
+  (defun split-and-follow-horizontally ()
+    (interactive)
+    (split-window-below)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+
+  (defun split-and-follow-vertically ()
+    (interactive)
+    (split-window-right)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 #+END_SRC
 
 ** Org
@@ -27,6 +44,14 @@ Agenda
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
+#+END_SRC
+
+** Config reload
+#+BEGIN_SRC emacs-lisp
+  (defun config-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (global-set-key (kbd "C-c r") 'config-reload)
 #+END_SRC
 
 * Terminal
@@ -86,6 +111,13 @@ Beautiful startup buffer
   (setq dashboard-set-navigator t)
 #+END_SRC
 
+** Avy
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind ("M-s" . avy-goto-char))
+#+END_SRC
+
 * Theme
 ** Dracula theme
 #+BEGIN_SRC emacs-lisp
@@ -141,3 +173,4 @@ Friendly suggestions for do things
   (add-hook 'prog-mode-hook 'set-bigger-spacing)
 #+END_SRC
  
+
