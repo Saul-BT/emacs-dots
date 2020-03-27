@@ -144,6 +144,14 @@ Paints delimiters by nest level
     :init (rainbow-delimiters-mode 1))
 #+END_SRC
 
+*** Company auto-completion
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :init
+    (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
 * Theme
 ** Dracula theme
 #+BEGIN_SRC emacs-lisp

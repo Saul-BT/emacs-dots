@@ -36,7 +36,7 @@
  '(display-line-numbers (quote relative))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters ng2-mode which-key use-package treemacs dashboard dracula-theme))))
+    (company rainbow-delimiters ng2-mode which-key use-package treemacs dashboard dracula-theme))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
