@@ -10,7 +10,7 @@
   (defvar bg-darker-color "#25262B")
 #+END_SRC
 
-* Keybinding
+* Keybindings
 ** Window
 Keybindings for resize windows
 #+BEGIN_SRC emacs-lisp
@@ -111,6 +111,15 @@ Beautiful startup buffer
 ** Aliases
 #+BEGIN_SRC emacs-lisp
   (defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** IDO
+Friendly suggestions for do things
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching nil)
+  (setq ido-create-new-buffer 'always)
+  (setq ido-everywhere t)
+  (ido-mode 1)
 #+END_SRC
 
 ** Prevent file backups
