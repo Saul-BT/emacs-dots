@@ -11,6 +11,15 @@
 #+END_SRC
 
 * Keybindings
+** Buffers
+Kill current buffer by overriding "C-x k" keybinding
+#+BEGIN_SRC emacs-lisp
+  (defun kill-curr-buffer ()
+    (interactive)
+    (kill-buffer (current-buffer)))
+  (global-set-key (kbd "C-x k") 'kill-curr-buffer)
+#+END_SRC
+
 ** Windows
 *** Resize windows
 #+BEGIN_SRC emacs-lisp
@@ -38,7 +47,12 @@
 #+END_SRC
 
 ** Org
-Agenda
+*** Src editting
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-window-setup 'current-window)
+#+END_SRC
+
+*** Agenda
 #+BEGIN_SRC emacs-lisp
 ;;  (setq show-week-agenda-p t)
   (global-set-key (kbd "C-c l") 'org-store-link)
@@ -172,5 +186,20 @@ Friendly suggestions for do things
   (add-hook 'text-mode-hook 'set-bigger-spacing)
   (add-hook 'prog-mode-hook 'set-bigger-spacing)
 #+END_SRC
- 
 
+** Subwords
+This mode lets you to cycle through sub-words
+#+BEGIN_SRC emacs-lisp
+  (global-subword-mode 1)
+#+END_SRC
+
+** Auto-closing
+#+BEGIN_SRC emacs-lisp
+  (electric-pair-mode t)
+#+END_SRC
+
+** Show Line and Column number on the modeline
+#+BEGIN_SRC emacs-lisp
+  (line-number-mode 1)
+  (column-number-mode 1)
+#+END_SRC
