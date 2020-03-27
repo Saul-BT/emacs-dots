@@ -78,7 +78,8 @@ Kill current buffer by overriding "C-x k" keybinding
 #+END_SRC
 
 * Packages
-** Which-key
+** Didactic
+*** Which-key
 For friendly suggestions in the mini-buffer
 #+BEGIN_SRC emacs-lisp
   (use-package which-key
@@ -86,7 +87,8 @@ For friendly suggestions in the mini-buffer
     :init (which-key-mode))
 #+END_SRC
 
-** Beacon
+** Styling
+*** Beacon
 Know cursor position with a cool animation
 #+BEGIN_SRC emacs-lisp
   (use-package beacon
@@ -94,7 +96,7 @@ Know cursor position with a cool animation
     :init (beacon-mode t))
 #+END_SRC
 
-** Icons
+*** Icons
 #+BEGIN_SRC emacs-lisp
   (use-package all-the-icons
     :ensure t
@@ -103,7 +105,7 @@ Know cursor position with a cool animation
       (all-the-icons-install-fonts t)))
 #+END_SRC
 
-** Dashboard
+*** Dashboard
 Beautiful startup buffer
 #+BEGIN_SRC emacs-lisp
   (use-package dashboard
@@ -125,11 +127,21 @@ Beautiful startup buffer
   (setq dashboard-set-navigator t)
 #+END_SRC
 
-** Avy
+** Useful
+*** Avy
 #+BEGIN_SRC emacs-lisp
   (use-package avy
     :ensure t
     :bind ("M-s" . avy-goto-char))
+#+END_SRC
+
+** Programming
+*** Rainbow delimiters
+Paints delimiters by nest level
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters
+    :ensure t
+    :init (rainbow-delimiters-mode 1))
 #+END_SRC
 
 * Theme
