@@ -1,0 +1,9 @@
+* Emacs resources
+** Uncle Dave's yt tutorial
+- [[https://www.youtube.com/playlist?list=PLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs Tutorial]]
+
+** Awesome Emacs
+- [[https://github.com/emacs-tw/awesome-emacs][GitHub Repo]]
+
+** Org Mode
+- [[https://orgmode.org/][Official Manual]]
