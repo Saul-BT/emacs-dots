@@ -135,6 +135,14 @@ Beautiful startup buffer
     :bind ("M-s" . avy-goto-char))
 #+END_SRC
 
+*** Popup kill ring
+A friendly way to work with the kill-ring
+#+BEGIN_SRC emacs-lisp
+  (use-package popup-kill-ring
+    :ensure t
+    :bind ("M-y" . popup-kill-ring))
+#+END_SRC
+
 ** Programming
 *** Rainbow delimiters
 Paints delimiters by nest level
