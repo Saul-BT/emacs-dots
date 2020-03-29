@@ -143,6 +143,14 @@ ISearch with super powers
     :config (global-set-key "\C-s" 'swiper))
 #+END_SRC
 
+*** Mark multiple
+Mark next same words, and can use multicursor :D
+#+BEGIN_SRC emacs-lisp
+  (use-package mark-multiple
+    :ensure t
+    :bind ("C-c m" . 'mark-next-like-this))
+#+END_SRC
+
 *** Popup kill ring
 A friendly way to work with the kill-ring
 #+BEGIN_SRC emacs-lisp
@@ -238,3 +246,4 @@ This mode lets you to cycle through sub-words
   (line-number-mode 1)
   (column-number-mode 1)
 #+END_SRC
+* [[file:useful-resources.org::*Emacs%20resources][Emacs resources]]
