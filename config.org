@@ -135,6 +135,14 @@ Beautiful startup buffer
     :bind ("M-s" . avy-goto-char))
 #+END_SRC
 
+*** Swiper
+ISearch with super powers
+#+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :ensure t
+    :config (global-set-key "\C-s" 'swiper))
+#+END_SRC
+
 *** Popup kill ring
 A friendly way to work with the kill-ring
 #+BEGIN_SRC emacs-lisp
@@ -149,15 +157,14 @@ Paints delimiters by nest level
 #+BEGIN_SRC emacs-lisp
   (use-package rainbow-delimiters
     :ensure t
-    :init (rainbow-delimiters-mode 1))
+    :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 #+END_SRC
 
 *** Company auto-completion
 #+BEGIN_SRC emacs-lisp
   (use-package company
     :ensure t
-    :init
-    (add-hook 'after-init-hook 'global-company-mode))
+    :init (add-hook 'after-init-hook 'global-company-mode))
 #+END_SRC
 
 * Theme
