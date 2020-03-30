@@ -9,6 +9,7 @@ bookmarks
 config.el
 diary
 elpa
+eshell
 network-security.data
 recentf
 server
