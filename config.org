@@ -130,6 +130,17 @@ Beautiful startup buffer
   (setq dashboard-set-navigator t)
 #+END_SRC
 
+*** =org-superstar-mode=
+Beautify org-mode with bullets
+#+BEGIN_SRC emacs-lisp
+  (use-package org-superstar
+    :ensure t
+    :init (add-hook 'org-mode-hook 'org-superstar-mode)
+    :config
+    (setq org-superstar-leading-bullet ?\s)
+    (setq org-superstar-headline-bullets-list '("✸" "○" "▷")))
+#+END_SRC
+
 ** Useful
 *** =avy=
 #+BEGIN_SRC emacs-lisp
