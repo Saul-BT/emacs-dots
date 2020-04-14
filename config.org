@@ -176,6 +176,13 @@ Set of useful =counsel= replacements for some Emacs commands
     ("C-x C-f" . counsel-find-file))  ;; find-file
 #+END_SRC
 
+*** =treemacs=
+#+BEGIN_SRC emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :bind ("C-x t" . 'treemacs))
+#+END_SRC
+
 ** Programming
 *** =rainbow-delimiters=
 Paints delimiters by nest level
