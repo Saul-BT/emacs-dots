@@ -91,12 +91,15 @@ For friendly suggestions in the mini-buffer
 #+END_SRC
 
 ** Styling
-*** =beacon=
-Know cursor position with a cool animation
+*** =dimmer=
+Highlights the current buffer
 #+BEGIN_SRC emacs-lisp
-  (use-package beacon
+  (use-package dimmer
     :ensure t
-    :init (beacon-mode t))
+    :config
+    (setq dimmer-fraction -0.1)
+    (setq dimmer-adjustment-mode :both)
+    :init (dimmer-mode t))
 #+END_SRC
 
 *** Icons

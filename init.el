@@ -36,7 +36,7 @@
  '(display-line-numbers (quote relative))
  '(package-selected-packages
    (quote
-    (org-superstar counsel flycheck tide web-mode mark-multiple htmlize swiper ox-twbs company rainbow-delimiters which-key use-package treemacs dashboard dracula-theme))))
+    (dimmer org-superstar counsel flycheck tide web-mode mark-multiple htmlize swiper ox-twbs company rainbow-delimiters which-key use-package treemacs dashboard dracula-theme))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
