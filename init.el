@@ -43,7 +43,6 @@
  '(awesome-tray-active-modules (quote ("buffer-name" "location" "mode-name" "date" "git")))
  '(awesome-tray-mode-line-active-color "#6575A9")
 
- '(display-line-numbers (quote relative))
  '(package-selected-packages
    (quote
     (dimmer org-superstar counsel flycheck tide web-mode mark-multiple htmlize swiper company rainbow-delimiters which-key use-package treemacs dashboard dracula-theme))))
