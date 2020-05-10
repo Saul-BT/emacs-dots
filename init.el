@@ -42,10 +42,9 @@
  ;; If there is more than one, they won't work right.
  '(awesome-tray-active-modules (quote ("buffer-name" "location" "mode-name" "date" "git")))
  '(awesome-tray-mode-line-active-color "#6575A9")
-
  '(package-selected-packages
    (quote
-    (dimmer org-superstar counsel flycheck tide web-mode mark-multiple htmlize swiper company rainbow-delimiters which-key use-package treemacs dashboard dracula-theme))))
+    (ox-reveal dimmer org-superstar counsel flycheck tide web-mode mark-multiple htmlize swiper company rainbow-delimiters which-key use-package treemacs dashboard dracula-theme))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -60,3 +59,4 @@
 
 ;; Enable awesome-tray (I can't from config.org D:)
 (awesome-tray-mode)
+(modify-frame-parameters nil '((wait-for-wm . nil)))

@@ -256,6 +256,17 @@ Paints delimiters by nest level
     :hook (web-mode . my/activate-tide-mode))
 #+END_SRC
 
+** Org-mode
+*** Reveal.js
+Make awesome html presentations!
+#+BEGIN_SRC emacs-lisp
+  (use-package ox-reveal
+    :ensure t
+    :config
+    (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js@3.9.2/")
+    (setq org-reveal-mathjax t))
+#+END_SRC
+
 * Theme
 ** =dracula-theme=
 #+BEGIN_SRC emacs-lisp
