@@ -4,7 +4,7 @@
 #+LANGUAGE: en
 #+OPTIONS: num:nil
 #+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-[[./img/screenshot.png]]
+[[./img/screenshot.jpg]]
 * Variables
 #+BEGIN_SRC emacs-lisp
   (defvar bg-darker-color "#25262B")
@@ -207,7 +207,10 @@ Set of useful =counsel= replacements for some Emacs commands
 #+BEGIN_SRC emacs-lisp
   (use-package treemacs
     :ensure t
-    :bind ("C-x t" . 'treemacs))
+    :bind ("C-x t" . 'treemacs)
+    :config
+    (when (file-readable-p "~/.emacs.d/custom/treemacs-theme.el")
+      (load-file (expand-file-name "~/.emacs.d/custom/treemacs-theme.el"))))
 #+END_SRC
 
 ** Org-mode
