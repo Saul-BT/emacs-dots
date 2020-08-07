@@ -10,14 +10,14 @@
   (defvar bg-darker-color "#25262B")
 #+END_SRC
 
-* Keybindings
+* Keybindings and Functions
 ** Buffers
 Kill current buffer by overriding "C-x k" keybinding
 #+BEGIN_SRC emacs-lisp
-  (defun kill-curr-buffer ()
+  (defun my/kill-curr-buffer ()
     (interactive)
     (kill-buffer (current-buffer)))
-  (global-set-key (kbd "C-x k") 'kill-curr-buffer)
+  (global-set-key (kbd "C-x k") 'my/kill-curr-buffer)
 #+END_SRC
 
 ** Windows
@@ -31,19 +31,19 @@ Kill current buffer by overriding "C-x k" keybinding
 
 *** Follow windows when split
 #+BEGIN_SRC emacs-lisp
-  (defun split-and-follow-horizontally ()
+  (defun my/split-and-follow-horizontally ()
     (interactive)
     (split-window-below)
     (balance-windows)
     (other-window 1))
-  (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
+  (global-set-key (kbd "C-x 2") 'my/split-and-follow-horizontally)
 
-  (defun split-and-follow-vertically ()
+  (defun my/split-and-follow-vertically ()
     (interactive)
     (split-window-right)
     (balance-windows)
     (other-window 1))
-  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+  (global-set-key (kbd "C-x 3") 'my/split-and-follow-vertically)
 #+END_SRC
 
 *** Move through the windows (=windmove=)
@@ -69,12 +69,21 @@ Kill current buffer by overriding "C-x k" keybinding
   (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
 
+*** Org editing
+#+BEGIN_SRC emacs-lisp
+  (defun my/split-and-follow-org-details ()
+    (interactive)
+    (org-tree-to-indirect-buffer)
+    (other-window 1))
+  (global-set-key (kbd "C-t") 'my/split-and-follow-org-details)
+#+END_SRC
+
 ** Config reload
 #+BEGIN_SRC emacs-lisp
-  (defun config-reload ()
+  (defun my/config-reload ()
     (interactive)
     (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
-  (global-set-key (kbd "C-c r") 'config-reload)
+  (global-set-key (kbd "C-c r") 'my/config-reload)
 #+END_SRC
 
 ** Other
@@ -201,6 +210,30 @@ Set of useful =counsel= replacements for some Emacs commands
     :bind ("C-x t" . 'treemacs))
 #+END_SRC
 
+** Org-mode
+*** Reveal.js
+Make awesome html presentations!
+#+BEGIN_SRC emacs-lisp
+  (use-package ox-reveal
+    :ensure t
+    :config
+    (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js@3.9.2/")
+    (setq org-reveal-mathjax t))
+#+END_SRC
+
+*** Writeroom
+#+BEGIN_SRC emacs-lisp
+  (use-package writeroom-mode
+    :ensure t
+    :init
+    (add-hook 'org-mode-hook
+	      (lambda ()
+		(writeroom-mode)
+		(setq header-line-format "")))
+    :config
+    (setq writeroom-width 0.75))
+#+END_SRC
+
 ** Programming
 *** =rainbow-delimiters=
 Paints delimiters by nest level
@@ -256,17 +289,6 @@ Paints delimiters by nest level
     :hook (web-mode . my/activate-tide-mode))
 #+END_SRC
 
-** Org-mode
-*** Reveal.js
-Make awesome html presentations!
-#+BEGIN_SRC emacs-lisp
-  (use-package ox-reveal
-    :ensure t
-    :config
-    (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js@3.9.2/")
-    (setq org-reveal-mathjax t))
-#+END_SRC
-
 * Theme
 ** =dracula-theme=
 #+BEGIN_SRC emacs-lisp
@@ -285,7 +307,7 @@ Make awesome html presentations!
 
 ** Line numbers
 #+BEGIN_SRC emacs-lisp
-  (setq display-line-numbers-type 'relative)
+;;  (setq display-line-numbers-type 'relative)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'org-mode-hook 'display-line-numbers-mode)
 #+END_SRC
