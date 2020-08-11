@@ -8,6 +8,7 @@
 * Variables
 #+BEGIN_SRC emacs-lisp
   (defvar bg-darker-color "#25262B")
+  (defvar accent-color "#FF7CCD")
 #+END_SRC
 
 * Keybindings and Functions
@@ -290,6 +291,52 @@ Paints delimiters by nest level
   (use-package tide
     :ensure t
     :hook (web-mode . my/activate-tide-mode))
+#+END_SRC
+
+*** =rustic= for rust development
+#+BEGIN_SRC emacs-lisp
+  (use-package rustic
+    :ensure t
+    :config
+    (setq rustic-lsp-server 'rls)
+    (setq rustic-format-on-save t)
+    (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer")))
+#+END_SRC
+
+** LSP
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :defer t
+    :hook ((prog-mode . lsp)
+	   (lsp-mode . lsp-enable-which-key-integration))
+    ;; Remove the :config section if you don't love Rust
+    :config
+    (setq lsp-rust-server 'rust-analyzer)
+    :commands lsp)
+#+END_SRC
+
+*** LSP UI
+#+BEGIN_SRC emacs-lisp
+      (use-package lsp-ui
+	:ensure t
+	:commands lsp-ui-mode
+	:config
+	(setq ;; lsp-ui-doc-position
+	      lsp-ui-doc-position 'top
+	      ;; lsp-ui-sideline
+	      lsp-ui-sideline-enable t
+	      lsp-ui-sideline-ignore-duplicate t
+	      lsp-ui-sideline-show-symbol t
+	      lsp-ui-sideline-show-hover t
+	      lsp-ui-sideline-show-diagnostics t
+	      lsp-ui-sideline-show-code-actions t
+	      lsp-ui-sideline-code-actions-prefix ""
+	      lsp-ui-sideline-update-mode 'line
+	      ;; misc
+	      lsp-ui-doc-border accent-color
+	      lsp-ui-doc-max-height 15)
+	:bind
+	("C-c C-v s" . lsp-ui-sideline-toggle-symbols-info))
 #+END_SRC
 
 * Theme
